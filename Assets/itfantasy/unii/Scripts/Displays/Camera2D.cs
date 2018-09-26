@@ -55,7 +55,6 @@ namespace itfantasy.unii
         void Reset()
         {
             curCamera2D = this;
-            this.color = new Color(100.0f / 255.0f, 149.0f / 255.0f, 237.0f / 255.0f, 1);
             mainCamera.orthographicSize = _viewSize.y / 200.0f;
             UpdateTransform();
         }
@@ -77,20 +76,6 @@ namespace itfantasy.unii
             }
             return target;
         }
-
-        /*
-        public Sprite2D RayHitSprite(Vector2 pos)
-        {
-            Sprite2D target = null;
-            Ray ray = mainCamera.ScreenPointToRay(P2DToScreenPoint(pos, 10));
-            RaycastHit hit;  
-            if (Physics.Raycast(ray, out hit))  
-            {
-                target = hit.collider.gameObject.GetComponent<Sprite2D>();
-            }  
-            return target;
-        }
-        */
 
         #region -----------------> 牵引式摄影机实现
 

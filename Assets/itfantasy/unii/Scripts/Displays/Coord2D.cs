@@ -33,26 +33,6 @@ namespace itfantasy.unii
 
         [HideInInspector]
         [SerializeField]
-        bool _isShowGrid;
-
-        public bool isShowGrid
-        {
-            get
-            {
-            #if UNITY_EDITOR
-                return _isShowGrid;
-            #else
-                return false;
-            #endif
-            }
-            set
-            {
-                _isShowGrid = value;
-            }
-        }
-
-        [HideInInspector]
-        [SerializeField]
         float _gridSize;
 
         public float gridSize
@@ -96,6 +76,11 @@ namespace itfantasy.unii
             set
             {
                 _gridRotation = value;
+                this.gameObject.transform.rotation = new Quaternion(
+                    this.gameObject.transform.rotation.x, 
+                    this.gameObject.transform.rotation.y,
+                    (float)(_gridRotation * System.Math.PI / 360.0f), 
+                    this.gameObject.transform.rotation.w);
             }
         }
 
@@ -451,6 +436,10 @@ namespace itfantasy.unii
             Reset();
         }
 
+        public void UpdateRotation()
+        {
+            _gridRotation = (float)(this.gameObject.transform.rotation.z * 360.0f / System.Math.PI);
+        }
 
     }
 }

@@ -19,7 +19,7 @@ namespace itfantasy.unii
         {
             Coord2D coord = (Coord2D)target;
             coord.UpdateTransform();
-            //coord.UpdateSize();
+            coord.UpdateRotation();
 
             coord.position = EditorGUILayout.Vector3Field("位 置", coord.position);
             //coord.size = EditorGUILayout.Vector2Field("尺 寸", coord.size);
@@ -34,7 +34,6 @@ namespace itfantasy.unii
                 coord.gridAngel = EditorGUILayout.FloatField("角 度", coord.gridAngel);
                 coord.gridRotation = EditorGUILayout.FloatField("旋 转", coord.gridRotation);
                 coord.gridArea = EditorGUILayout.FloatField("范 围", coord.gridArea);
-                coord.isShowGrid = EditorGUILayout.Toggle("是否显示", coord.isShowGrid);
                 
                 GUILayout.EndVertical();
                 NGUIEditorTools.EndContents();
@@ -127,10 +126,7 @@ namespace itfantasy.unii
         void OnSceneGUI()
         {
             Coord2D coord = (Coord2D)target;
-            if (coord.isShowGrid)
-            {
-                DrawGrid();
-            }
+            DrawGrid();
             DrawTerrains();
             Event e = Event.current;
             if (e.isMouse)
